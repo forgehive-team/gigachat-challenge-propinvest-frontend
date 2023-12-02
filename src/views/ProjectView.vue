@@ -58,25 +58,23 @@ const fetchData = async (): Promise<void> => {
   } catch (e) {
     console.log(e)
     data.value = {
-      id: 1,
-      name: '\u0416\u041a \u0414\u043e\u043c \u041b\u0430\u0432\u0440\u0443\u0448\u0438\u043d\u0441\u043a\u0438\u0439',
-      description: null,
+      id: 15,
+      name: '\u0416\u041a \u0420\u0435\u043a\u0430',
+      description:
+        '\u0421\u0442\u0430\u0442\u0443\u0441, \u044d\u043a\u043e\u043b\u043e\u0433\u0438\u044f, \u043e\u0442\u043b\u0438\u0447\u043d\u0430\u044f \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0430\u044f \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u2013 \u0442\u0440\u0438 \u043a\u0438\u0442\u0430 \u0440\u0430\u0439\u043e\u043d\u0430 \u0420\u0430\u043c\u0435\u043d\u043a\u0438, \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e\u0433\u043e \u043c\u043d\u043e\u0433\u043e\u0447\u0438\u0441\u043b\u0435\u043d\u043d\u044b\u043c\u0438 \u043f\u0430\u0440\u043a\u0430\u043c\u0438, \u0437\u0430\u043f\u043e\u0432\u0435\u0434\u043d\u0438\u043a\u0430\u043c\u0438, \u043f\u0440\u0435\u0441\u0442\u0438\u0436\u043d\u044b\u043c\u0438 \u0412\u0423\u0417\u0430\u043c\u0438 \u0438 \u044d\u043b\u0438\u0442\u043d\u044b\u043c\u0438 \u0436\u0438\u043b\u044b\u043c\u0438 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0441\u0430\u043c\u0438.',
       images: [
-        'https:\/\/erzrf.ru\/images\/doctypes\/22353531001DOCTYPES.jpg',
-        'https:\/\/erzrf.ru\/images\/doctypes\/22353558001DOCTYPES.jpg',
-        'https:\/\/erzrf.ru\/images\/doctypes\/22353560001DOCTYPES.jpg',
-        'https:\/\/erzrf.ru\/images\/doctypes\/22353564001DOCTYPES.jpg',
-        'https:\/\/erzrf.ru\/images\/doctypes\/22353566001DOCTYPES.jpg',
-        'https:\/\/erzrf.ru\/images\/doctypes\/22353568001DOCTYPES.jpg',
-        'https:\/\/erzrf.ru\/images\/doctypes\/22474362001DOCTYPES.jpg'
+        'https:\/\/erzrf.ru\/images\/doctypes\/11650986001DOCTYPES.jpg',
+        'https:\/\/erzrf.ru\/images\/doctypes\/11650988001DOCTYPES.jpg',
+        'https:\/\/erzrf.ru\/images\/doctypes\/11650990001DOCTYPES.jpg',
+        'https:\/\/erzrf.ru\/images\/doctypes\/11650992001DOCTYPES.jpg'
       ],
-      coordinates: [55.739397, 37.620223],
-      metro: null,
+      coordinates: [55.691936, 37.480376],
+      metro:
+        '\u041c\u0438\u0447\u0443\u0440\u0438\u043d\u0441\u043a\u0438\u0439 \u043f\u0440\u043e\u0441\u043f\u0435\u043a\u0442 (7 \u043c\u0438\u043d. \u043f\u0435\u0448\u043a\u043e\u043c, 7 \u043c\u0438\u043d. \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435)',
       city: '\u0433. \u041c\u043e\u0441\u043a\u0432\u0430',
-      area: '\u042f\u043a\u0438\u043c\u0430\u043d\u043a\u0430',
+      area: '\u0420\u0430\u043c\u0435\u043d\u043a\u0438',
       region: '\u0433.\u041c\u043e\u0441\u043a\u0432\u0430',
-      street:
-        '\u043f\u0435\u0440\u0435\u0443\u043b\u043e\u043a \u0411\u043e\u043b\u044c\u0448\u043e\u0439 \u0422\u043e\u043b\u043c\u0430\u0447\u0435\u0432\u0441\u043a\u0438\u0439'
+      street: '\u0443\u043b\u0438\u0446\u0430 \u041b\u043e\u0431\u0430\u0447\u0435\u0432\u0441\u043a\u043e\u0433\u043e'
     }
   }
 }
