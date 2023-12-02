@@ -8,8 +8,9 @@
 
 <script setup lang="ts">
 import { yandexMap, ymapMarker } from 'vue-yandex-maps'
-
-const coordinates = ['55.779504', '37.711258']
+defineProps<{
+  coordinates: number[]
+}>()
 </script>
 
 <style scoped>

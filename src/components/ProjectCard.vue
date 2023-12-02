@@ -1,7 +1,7 @@
 <template>
   <div class="bg-card p-[30px] rounded">
     <div class="relative flex gap-[60px]">
-      <img src="/413.jpeg" />
+      <img :src="image" />
       <div class="w-[50%] pl-[60px] ml-auto flex flex-col gap-[60px]">
         <h2 class="text-secondary font-normal text-2xl leading-none">{{ title }}</h2>
         <p class="text-secondary font-light text-[18px] leading-6">{{ descriprion }}</p>
@@ -17,14 +17,19 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
 const props = defineProps<{
   title: string
   descriprion: string
   projectId: number
+  image: string
 }>()
 
+const router = useRouter()
+
 const goToProject = (): void => {
-  console.log(props.projectId)
+  router.push(`/projects/${props.projectId}`)
 }
 </script>
 
