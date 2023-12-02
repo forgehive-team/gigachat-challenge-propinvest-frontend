@@ -18,7 +18,7 @@ import { ref } from 'vue'
 
 const emit = defineEmits<{ (e: 'submit'): void }>()
 
-const sexes = [
+const sexes: FormTabItem[] = [
   {
     key: 'male',
     name: 'Мужчина'

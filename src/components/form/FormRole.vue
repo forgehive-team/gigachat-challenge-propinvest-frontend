@@ -13,7 +13,7 @@ import { ref } from 'vue'
 
 const emit = defineEmits<{ (e: 'submit'): void }>()
 
-const roles = [
+const roles: FormTabItem[] = [
   {
     key: 'customer',
     name: 'Покупатель'
