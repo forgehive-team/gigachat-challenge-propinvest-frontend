@@ -8,12 +8,20 @@
       <FormSport v-else-if="formStep === 5" @submit="++formStep" />
       <FormYard v-else-if="formStep === 6" @submit="++formStep" />
       <FormSafe v-else-if="formStep === 7" @submit="++formStep" />
+      <FormChill v-else-if="formStep === 8" @submit="++formStep" />
+      <FormHarm v-else-if="formStep === 9" @submit="++formStep" />
+      <FormArchitecture v-else-if="formStep === 10" @submit="++formStep" />
+      <FormGroups v-else-if="formStep === 11" @submit="++formStep" />
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import {
+  FormArchitecture,
+  FormChill,
+  FormGroups,
+  FormHarm,
   FormInfrastructure,
   FormMaritalStatus,
   FormParking,
@@ -25,5 +33,5 @@ import {
 
 import { ref } from 'vue'
 
-const formStep = ref(1)
+const formStep = ref(11)
 </script>
