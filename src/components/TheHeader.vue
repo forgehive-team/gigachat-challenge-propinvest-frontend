@@ -1,5 +1,5 @@
 <template>
-  <header class="flex justify-center py-7">
+  <header class="flex justify-center py-10">
     <div class="container flex justify-between items-center">
       <div class="self-start text-secondary">
         <IconLogo />
