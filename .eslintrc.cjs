@@ -10,7 +10,7 @@ module.exports = {
     '@vue/eslint-config-prettier',
     'prettier'
   ],
-  ignorePatterns: ['vite.config.ts', '.eslintrc.cjs'],
+  ignorePatterns: ['vite.config.*', '.eslintrc.*', 'tailwind.config.*'],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
