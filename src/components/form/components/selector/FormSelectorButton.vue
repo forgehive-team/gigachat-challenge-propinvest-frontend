@@ -1,7 +1,7 @@
 <template>
   <FormComponent class="flex justify-between items-center px-7 cursor-pointer">
     <span class="font-light">{{ title }}</span>
-    <IconArrowDownSolid :class="{ 'rotate-180': isOpen }" class="w-4 transition-transform" />
+    <IconArrowDownSolid :class="{ 'rotate-180': isOpen }" class="min-w-[1rem] w-4 transition-transform" />
   </FormComponent>
 </template>
 
