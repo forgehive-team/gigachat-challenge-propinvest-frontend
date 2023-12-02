@@ -1,0 +1,26 @@
+<template>
+  <header class="flex justify-center py-7">
+    <div class="container flex justify-between items-center">
+      <div class="self-start text-secondary">
+        <IconLogo />
+      </div>
+
+      <div class="flex space-x-32 xl:space-x-56 text-secondary font-light text-xl">
+        <menu class="flex flex-row space-x-20">
+          <a>Проекты</a>
+          <a>Лоты</a>
+          <a>О компании</a>
+          <a>Контакты</a>
+        </menu>
+
+        <div class="flex flex-col text-accent">
+          <IconPerson />
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script setup lang="ts">
+import { IconLogo, IconPerson } from '@/components/icons'
+</script>

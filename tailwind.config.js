@@ -6,6 +6,12 @@ module.exports = {
       sans: ['Roboto', 'sans-serif']
     },
     extend: {
+      colors: {
+        primary: '#FFF',
+        secondary: '#262C35',
+        accent: '#1A4586',
+        dark: '#191919'
+      }
     }
   },
   plugins: []
