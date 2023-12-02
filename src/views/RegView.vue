@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { FormProfile, FormReg, FormRole } from '@/components/form'
+import { FormProfile, FormReg, FormRole } from '@/components/form/reg'
 
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
