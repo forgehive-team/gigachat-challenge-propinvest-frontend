@@ -135,3 +135,15 @@
   font-style: italic;
   font-display: swap;
 }
+
+// Arsenal Bold
+@font-face {
+  font-family: 'Arsenal';
+  src:
+    local('Arsenal-Bold'),
+    url('@/assets/fonts/Arsenal-Bold.ttf') format('truetype'),
+    url('@/assets/fonts/Arsenal-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
