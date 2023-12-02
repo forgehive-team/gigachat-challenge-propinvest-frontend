@@ -11,6 +11,7 @@ module.exports = {
         primary: '#FFF',
         secondary: '#262C35',
         accent: '#1A4586',
+        card: '#D6E0F0',
         hover: {
           950: '#265AA9',
           500: '#D6E0F0'

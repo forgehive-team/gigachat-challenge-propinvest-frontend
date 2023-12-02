@@ -20,6 +20,11 @@ const router = createRouter({
       path: '/circle',
       name: 'home 2.0',
       component: (): Component => import('../views/CircleView.vue')
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: (): Component => import('../views/AccountView.vue')
     }
   ]
 })
