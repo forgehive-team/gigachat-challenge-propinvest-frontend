@@ -7,9 +7,9 @@
 
       <div class="flex space-x-32 xl:space-x-56 text-secondary font-light text-xl">
         <menu class="flex flex-row space-x-20">
-          <a>Проекты</a>
+          <RouterLink to="/projects">Проекты</RouterLink>
           <a>Лоты</a>
-          <a>О компании</a>
+          <RouterLink to="/">О компании</RouterLink>
           <a>Контакты</a>
         </menu>
 
@@ -23,4 +23,5 @@
 
 <script setup lang="ts">
 import { IconLogo, IconPerson } from '@/components/icons'
+import { RouterLink } from 'vue-router'
 </script>
