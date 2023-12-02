@@ -4,6 +4,7 @@
       v-model="value"
       :disabled="disabled"
       :placeholder="placeholder"
+      :type="type"
       class="w-full px-7 py-4 outline-none font-light"
     />
   </FormComponent>
@@ -13,12 +14,13 @@
 import { FormComponent } from '.'
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{ modelValue: string; disabled?: boolean; placeholder?: string }>(), {
-  disabled: false
-})
+const props = withDefaults(
+  defineProps<{ modelValue: string | number; disabled?: boolean; placeholder?: string; type?: 'text' | 'number' }>(),
+  { type: 'text', disabled: false }
+)
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: string | number): void
 }>()
 
 const value = computed({
