@@ -16,11 +16,15 @@ const router = createRouter({
       name: 'about',
       component: (): Component => import('../views/AboutView.vue')
     },
-
     {
-      path: '/form',
-      name: 'form',
-      component: (): Component => import('../views/FormView.vue')
+      path: '/reg',
+      name: 'registation',
+      component: (): Component => import('../views/RegView.vue')
+    },
+    {
+      path: '/quest',
+      name: 'questionnaire',
+      component: (): Component => import('../views/QuestView.vue')
     },
     {
       path: '/account',
