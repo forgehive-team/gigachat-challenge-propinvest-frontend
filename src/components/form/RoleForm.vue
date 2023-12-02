@@ -11,7 +11,7 @@ import { FormButton, FormTab, TheForm } from '@/components/form/components'
 import type { FormTabItem } from '@/types'
 import { ref } from 'vue'
 
-const role = ref<FormTabItem>({ key: '', name: '' })
+const emit = defineEmits<{ (e: 'submit'): void }>()
 
 const roles = [
   {
@@ -24,7 +24,9 @@ const roles = [
   }
 ]
 
+const role = ref<FormTabItem>({ key: '', name: '' })
+
 const next = (): void => {
-  alert(`Next fuck u, ${role.value}`)
+  emit('submit')
 }
 </script>
