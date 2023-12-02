@@ -1,5 +1,5 @@
 <template>
-  <TheForm :data="{ title: 'Выберите роль' }">
+  <TheForm :data="{ title: 'Заполните профиль' }">
     <FormInput v-model="secondName" placeholder="Фамилия" />
     <FormInput v-model="firstName" placeholder="Имя" />
     <FormInput v-model="middleName" placeholder="Отчество" />
