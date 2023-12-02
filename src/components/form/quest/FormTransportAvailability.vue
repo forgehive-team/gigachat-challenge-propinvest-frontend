@@ -38,7 +38,7 @@ const carNumberList: FormSelectorItem[] = [
 
 const important = ref<FormSelectorItem>(importantList[0])
 const kindTransport = ref<FormSelectorItem>(kindTransportList[0])
-const carNumber = ref<FormSelectorItem>(kindTransportList[0])
+const carNumber = ref<FormSelectorItem>(carNumberList[0])
 
 const registate = (): void => {
   emit('submit')

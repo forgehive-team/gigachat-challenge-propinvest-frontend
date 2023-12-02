@@ -12,6 +12,12 @@
       <FormHarm v-else-if="formStep === 9" @submit="++formStep" />
       <FormArchitecture v-else-if="formStep === 10" @submit="++formStep" />
       <FormGroups v-else-if="formStep === 11" @submit="++formStep" />
+      <FormElevator v-else-if="formStep === 12" @submit="++formStep" />
+      <FormDisabilities v-else-if="formStep === 13" @submit="++formStep" />
+      <FormHomeFeature v-else-if="formStep === 14" @submit="++formStep" />
+      <FormClientService v-else-if="formStep === 15" @submit="++formStep" />
+      <FormBuildParam v-else-if="formStep === 16" @submit="++formStep" />
+      <FormExtra v-else-if="formStep === 17" @submit="++formStep" />
     </div>
   </main>
 </template>
@@ -19,9 +25,15 @@
 <script setup lang="ts">
 import {
   FormArchitecture,
+  FormBuildParam,
   FormChill,
+  FormClientService,
+  FormDisabilities,
+  FormElevator,
+  FormExtra,
   FormGroups,
   FormHarm,
+  FormHomeFeature,
   FormInfrastructure,
   FormMaritalStatus,
   FormParking,
@@ -33,5 +45,5 @@ import {
 
 import { ref } from 'vue'
 
-const formStep = ref(11)
+const formStep = ref(1)
 </script>

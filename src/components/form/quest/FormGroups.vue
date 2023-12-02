@@ -1,6 +1,8 @@
 <template>
   <TheForm :data="{ title: 'Входные группы' }">
-    <FormComponent> Какие виды активного или пассивного отдыха вы предпочитаете? </FormComponent>
+    <FormComponent>
+      <span class="text-lg"> Какие удобства в подъезде для вас важны? </span>
+    </FormComponent>
 
     <template v-for="element in kindChillList" :key="element.value">
       <FormCheckbox v-model="kindChill" :value="element.value" :text="element.text" />

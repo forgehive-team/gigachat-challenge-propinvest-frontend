@@ -1,5 +1,5 @@
 <template>
-  <TheForm :data="{ title: 'Семейное положение' }">
+  <TheForm :data="{ title: 'Социальная инфраструктура' }">
     <FormSelector v-model="needSocial" :items="needSocialList" />
     <FormSelector v-model="needFun" :items="needFunList" />
     <FormTextarea
@@ -25,8 +25,8 @@ const needSocialList: FormSelectorItem[] = [
     disabled: true,
     value: ''
   },
-  { key: 'married', name: 'Женат / замужем', value: 'married' },
-  { key: 'single', name: 'Холост', value: 'single' }
+  { key: 'yes', name: 'Да', value: 'yes' },
+  { key: 'no', name: 'Нет', value: 'no' }
 ]
 
 const needFunList: FormSelectorItem[] = [

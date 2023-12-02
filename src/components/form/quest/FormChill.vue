@@ -5,7 +5,9 @@
       placeholder="Какие объекты для отдыха вы хотели бы иметь в шаговой доступности?"
     />
 
-    <FormComponent> Какие виды активного или пассивного отдыха вы предпочитаете? </FormComponent>
+    <FormComponent>
+      <span class="text-lg"> Какие виды активного или пассивного отдыха вы предпочитаете? </span>
+    </FormComponent>
 
     <template v-for="element in kindChillList" :key="element.value">
       <FormCheckbox v-model="kindChill" :value="element.value" :text="element.text" />

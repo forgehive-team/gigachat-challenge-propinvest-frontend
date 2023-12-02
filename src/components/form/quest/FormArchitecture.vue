@@ -1,6 +1,8 @@
 <template>
   <TheForm :data="{ title: 'Архитектура, фасады' }">
-    <FormComponent> Какие архитектурные особенности и элементы фасада для вас предпочтительны? </FormComponent>
+    <FormComponent>
+      <span class="text-lg"> Какие архитектурные особенности и элементы фасада для вас предпочтительны? </span>
+    </FormComponent>
 
     <template v-for="element in favoriteArchList" :key="element.value">
       <FormCheckbox v-model="favoriteArch" :value="element.value" :text="element.text" />
