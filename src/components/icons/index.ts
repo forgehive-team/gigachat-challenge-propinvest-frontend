@@ -1,4 +1,5 @@
+import IconHomeCircle from './IconHomeCircle.vue'
 import IconLogo from './IconLogo.vue'
 import IconPerson from './IconPerson.vue'
 
-export { IconLogo, IconPerson }
+export { IconHomeCircle, IconLogo, IconPerson }
