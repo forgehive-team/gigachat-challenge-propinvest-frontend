@@ -1,4 +1,5 @@
+import ProfileForm from './ProfileForm.vue'
 import RegForm from './RegForm.vue'
 import RoleForm from './RoleForm.vue'
 
-export { RegForm, RoleForm }
+export { ProfileForm, RegForm, RoleForm }
