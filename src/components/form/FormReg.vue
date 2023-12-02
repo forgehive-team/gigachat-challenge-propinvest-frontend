@@ -11,10 +11,12 @@ import { FormButton, FormInput, TheForm } from '@/components/form/components'
 
 import { ref } from 'vue'
 
+const emit = defineEmits<{ (e: 'submit'): void }>()
+
 const phone = ref('')
 const login = ref('')
 
 const registate = (): void => {
-  alert('Fuck u')
+  emit('submit')
 }
 </script>

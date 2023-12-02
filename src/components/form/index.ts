@@ -1,4 +1,6 @@
-import RegForm from './RegForm.vue'
-import RoleForm from './RoleForm.vue'
+import FormMaritalStatus from './FormMaritalStatus.vue'
+import FormProfile from './FormProfile.vue'
+import FormReg from './FormReg.vue'
+import FormRole from './FormRole.vue'
 
-export { RegForm, RoleForm }
+export { FormMaritalStatus, FormProfile, FormReg, FormRole }

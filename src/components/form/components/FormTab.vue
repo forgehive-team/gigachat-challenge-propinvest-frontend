@@ -17,22 +17,21 @@
 <script setup lang="ts">
 import { FormButton, FormComponent } from '.'
 
+import type { FormTabItem } from '@/types'
 import { computed } from 'vue'
 
-interface TabItem {
-  key: string
-  name: string
-}
-
-const props = withDefaults(defineProps<{ modelValue: TabItem; items?: TabItem[]; direction?: 'row' | 'col' }>(), {
-  direction: 'col'
-})
+const props = withDefaults(
+  defineProps<{ modelValue: FormTabItem; items?: FormTabItem[]; direction?: 'row' | 'col' }>(),
+  {
+    direction: 'col'
+  }
+)
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: TabItem): void
+  (e: 'update:modelValue', value: FormTabItem): void
 }>()
 
-const selectTab = (selectedTab: TabItem): void => {
+const selectTab = (selectedTab: FormTabItem): void => {
   value.value = selectedTab
 }
 

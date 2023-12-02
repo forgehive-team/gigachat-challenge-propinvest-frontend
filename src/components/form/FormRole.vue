@@ -1,6 +1,6 @@
 <template>
   <TheForm :data="{ title: 'Выберите роль' }">
-    <FormTab v-model="role" :items="roles" direction="row" />
+    <FormTab v-model="role" :items="roles" />
     <FormButton title="Далее" :action="next" class="bg-accent text-primary" />
   </TheForm>
 </template>
@@ -8,16 +8,12 @@
 <script setup lang="ts">
 import { FormButton, FormTab, TheForm } from '@/components/form/components'
 
+import type { FormTabItem } from '@/types'
 import { ref } from 'vue'
 
-interface TabItem {
-  key: string
-  name: string
-}
+const emit = defineEmits<{ (e: 'submit'): void }>()
 
-const role = ref<TabItem>({ key: '', name: '' })
-
-const roles = [
+const roles: FormTabItem[] = [
   {
     key: 'customer',
     name: 'Покупатель'
@@ -28,7 +24,9 @@ const roles = [
   }
 ]
 
+const role = ref<FormTabItem>({ key: '', name: '' })
+
 const next = (): void => {
-  alert(`Next fuck u, ${role.value}`)
+  emit('submit')
 }
 </script>
