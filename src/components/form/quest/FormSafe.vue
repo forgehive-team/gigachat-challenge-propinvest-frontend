@@ -15,7 +15,7 @@ import { FormButton, FormSelector, FormTextarea, TheForm } from '@/components/fo
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const needSafeList: FormSelectorItem[] = [
   {
@@ -33,6 +33,12 @@ const needSafe = ref<FormSelectorItem>(needSafeList[0])
 const extraSafe = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Насколько важны для вас такие аспекты безопасности, как консьерж, огороженная территория, видеонаблюдение?':
+      needSafe.value,
+    'Какие дополнительные меры безопасности вы считаете необходимыми в жилом комплексе?': extraSafe.value
+  }
+
+  emit('submit', answer)
 }
 </script>

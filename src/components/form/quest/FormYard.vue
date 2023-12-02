@@ -19,13 +19,13 @@ import { FormButton, FormCheckbox, FormComponent, FormSelector, TheForm } from '
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const yardElements = [
-  { value: 'green', text: 'Зеленые зоны: Включает парки, сады и озеленение' },
-  { value: 'fun', text: 'Игровые и спортивные площадки: Для детей и взрослых' },
-  { value: 'chill', text: 'Отдых и инфраструктура: Места для прогулок, пикников и велопарковки' },
-  { value: 'safe', text: 'Безопасность и комфорт: Wi-Fi, Видеонаблюдение,  освещение' }
+  { value: 'зеленые зоны', text: 'Зеленые зоны: Включает парки, сады и озеленение' },
+  { value: 'игровые и спортивные площадки', text: 'Игровые и спортивные площадки: Для детей и взрослых' },
+  { value: 'отдых и инфраструктура', text: 'Отдых и инфраструктура: Места для прогулок, пикников и велопарковки' },
+  { value: 'безопасность и комфорт', text: 'Безопасность и комфорт: Wi-Fi, Видеонаблюдение,  освещение' }
 ]
 
 const needSafeList: FormSelectorItem[] = [
@@ -43,6 +43,12 @@ const selectedElements = ref([])
 const needSafe = ref<FormSelectorItem>(needSafeList[0])
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие элементы дворового пространства вы считаете обязательными?': selectedElements.value.join(', '),
+    'Ищете ли вы жильё с безопасными и удобными зонами для детей или пожилых родственников?':
+      needSafe.value.key === 'yes' ? 'Да, ищу' : 'Нет, не ищу'
+  }
+
+  emit('submit', answer)
 }
 </script>

@@ -10,11 +10,15 @@ import { FormButton, FormTextarea, TheForm } from '@/components/form/components'
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const favoriteSport = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие виды спорта вы предпочитаете?': favoriteSport.value
+  }
+
+  emit('submit', answer)
 }
 </script>

@@ -16,7 +16,7 @@ import { FormButton, FormSelector, FormTextarea, TheForm } from '@/components/fo
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const needSocialList: FormSelectorItem[] = [
   {
@@ -45,6 +45,14 @@ const needFun = ref<FormSelectorItem>(needFunList[0])
 const hasChildren = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Важна ли для вас доступность детских садов, школ, поликлиник, магазинов поблизости?':
+      needSocial.value.key === 'yes' ? 'Да, очень важна' : 'В целом, не испытываю в этом нужды',
+    'Интересуют ли вас наличие торговых центров и спортивных секций в районе?':
+      needSocial.value.key === 'yes' ? 'Да, интересуют' : 'Нет, не интересуют',
+    'Есть ли у вас дети, и насколько для вас важно наличие образовательных учреждений рядом с домом?': hasChildren.value
+  }
+
+  emit('submit', answer)
 }
 </script>

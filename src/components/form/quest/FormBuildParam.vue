@@ -17,7 +17,7 @@ import { FormButton, FormSelector, FormTextarea, TheForm } from '@/components/fo
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const preferList: FormSelectorItem[] = [
   { key: '', name: 'Какие жилые комплексы вы предпочитаете?', disabled: true, value: '' },
@@ -29,6 +29,8 @@ const prefer = ref<FormSelectorItem>(preferList[0])
 const important = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const result = {}
+
+  emit('submit', result)
 }
 </script>

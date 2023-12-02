@@ -18,7 +18,7 @@ import { FormButton, FormInput, FormSelector, TheForm } from '@/components/form/
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const martialStatusList: FormSelectorItem[] = [
   { key: '', name: 'Ваше семейное положение', disabled: true, value: '' },
@@ -37,6 +37,13 @@ const hasChildern = ref<FormSelectorItem>(hasChildernList[0])
 const childernNumber = ref<number>(0)
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Каков ваш семейный статус и есть ли дети?': [
+      selectedStatus.value.key === 'married' ? 'Женат, ' : 'Холост, ',
+      hasChildern.value.key === 'yes' ? `eсть ${childernNumber.value} детей` : 'нет детей'
+    ].join('')
+  }
+
+  emit('submit', answer)
 }
 </script>

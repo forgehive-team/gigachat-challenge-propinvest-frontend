@@ -1,7 +1,7 @@
 <template>
   <TheForm :data="{ title: 'Парковка' }">
     <FormSelector v-model="useElectrocar" :items="useElectrocarList" />
-    <FormButton title="Далее" :action="registate" class="bg-accent text-primary" />
+    <FormButton title="Далее" :action="next" class="bg-accent text-primary" />
   </TheForm>
 </template>
 
@@ -11,7 +11,7 @@ import { FormButton, FormSelector, TheForm } from '@/components/form/components'
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const useElectrocarList: FormSelectorItem[] = [
   { key: '', name: 'Используете ли Вы электромобиль и нуждаетесь ли в зарядной станции?', disabled: true, value: '' },
@@ -21,7 +21,12 @@ const useElectrocarList: FormSelectorItem[] = [
 
 const useElectrocar = ref<FormSelectorItem>(useElectrocarList[0])
 
-const registate = (): void => {
-  emit('submit')
+const next = (): void => {
+  const answer = {
+    'Используете ли вы электромобиль и нуждаетесь ли в зарядной станции?':
+      useElectrocar.value.key === 'yes' ? 'Да, использую и нуждаюсь' : 'Не использую электромобиль'
+  }
+
+  emit('submit', answer)
 }
 </script>
