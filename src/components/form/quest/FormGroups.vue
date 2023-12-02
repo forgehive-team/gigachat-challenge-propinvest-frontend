@@ -17,17 +17,21 @@ import { FormButton, FormCheckbox, FormComponent, TheForm } from '@/components/f
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const kindChillList = [
-  { value: 'lift', text: 'Лифт из паркинга' },
-  { value: 'safe', text: 'Система безопасности' },
-  { value: 'wheelchair', text: 'Наличие колясочной' }
+  { value: 'лифт из паркинга', text: 'Лифт из паркинга' },
+  { value: 'система безопасности', text: 'Система безопасности' },
+  { value: 'наличие колясочной', text: 'Наличие колясочной' }
 ]
 
 const kindChill = ref([])
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие удобства в подъезде для вас важны?': kindChill.value.join(', ')
+  }
+
+  emit('submit', answer)
 }
 </script>

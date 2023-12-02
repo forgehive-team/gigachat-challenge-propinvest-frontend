@@ -17,17 +17,21 @@ import { FormButton, FormCheckbox, FormComponent, TheForm } from '@/components/f
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const elevatorFeaturesList = [
-  { value: 'layout', text: 'Планировка' },
-  { value: 'decoration', text: 'Отделка' },
-  { value: 'view', text: 'Вид из окон' }
+  { value: 'планировка', text: 'Планировка' },
+  { value: 'отделка', text: 'Отделка' },
+  { value: 'вид из окон', text: 'Вид из окон' }
 ]
 
 const elevatorFeatures = ref([])
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие характеристики квартир для вас наиболее значимы?': elevatorFeatures.value.join(', ')
+  }
+
+  emit('submit', answer)
 }
 </script>

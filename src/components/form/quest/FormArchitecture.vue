@@ -16,19 +16,23 @@ import { FormButton, FormCheckbox, FormComponent, TheForm } from '@/components/f
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const favoriteArchList = [
-  { value: 'modern', text: 'Современный стиль' },
-  { value: 'clasic', text: 'Классический стиль' },
-  { value: 'eco', text: 'Экологичный дизайн' },
-  { value: 'inovation', text: 'Инновационные решения' },
-  { value: 'none', text: 'Нет предпочтений' }
+  { value: 'cовременный стиль', text: 'Современный стиль' },
+  { value: 'классический стиль', text: 'Классический стиль' },
+  { value: 'экологичный дизайн', text: 'Экологичный дизайн' },
+  { value: 'инновационные решения', text: 'Инновационные решения' },
+  { value: 'нет предпочтений', text: 'Нет предпочтений' }
 ]
 
 const favoriteArch = ref([])
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие архитектурные особенности и элементы фасада для вас предпочтительны?': favoriteArch.value.join(', ')
+  }
+
+  emit('submit', answer)
 }
 </script>

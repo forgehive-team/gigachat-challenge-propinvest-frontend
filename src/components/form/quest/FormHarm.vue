@@ -14,11 +14,15 @@ import { FormButton, FormTextarea, TheForm } from '@/components/form/components'
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const harmFactors = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Есть ли для вас неприемлемые факторы окружающей среды или соседства?': harmFactors.value
+  }
+
+  emit('submit', answer)
 }
 </script>

@@ -17,20 +17,20 @@ import { FormButton, FormCheckbox, FormComponent, TheForm } from '@/components/f
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const servicesList = [
   {
-    value: 'services',
+    value: 'услуги консьержа и безопасности',
     text: 'Услуги консьержа и безопасности: Предоставление услуг консьержа, охраны, видеонаблюдения'
   },
   {
-    value: 'tech',
+    value: 'техническое обслуживание',
     text: 'Техническое обслуживание: Регулярный ремонт и техническое обслуживание общих пространств и инженерных систем'
   },
-  { value: 'support', text: 'Службы поддержки: Уборка, садоводство, управление мусором и рециклинг' },
+  { value: 'службы поддержки', text: 'Службы поддержки: Уборка, садоводство, управление мусором и рециклинг' },
   {
-    value: 'comfort',
+    value: 'дополнительные удобства',
     text: 'Дополнительные удобства: Фитнес-центр, детские клубы, прачечная, салоны красоты в пределах жилого комплекса'
   }
 ]
@@ -38,6 +38,10 @@ const servicesList = [
 const services = ref([])
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие дополнительные услуги от застройщика могли бы вас заинтересовать?': services.value.join(', ')
+  }
+
+  emit('submit', answer)
 }
 </script>

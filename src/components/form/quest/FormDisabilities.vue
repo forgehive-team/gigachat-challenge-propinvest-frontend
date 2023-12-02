@@ -17,7 +17,7 @@ import { FormButton, FormSelector, FormTextarea, TheForm } from '@/components/fo
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const disabilitiesList: FormSelectorItem[] = [
   {
@@ -34,6 +34,11 @@ const disabilities = ref<FormSelectorItem>(disabilitiesList[0])
 const description = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Есть ли в Вашей семье люди с ограниченными возможностями?': disabilities.value.name,
+    'Какие удобства им необходимы?': description.value
+  }
+
+  emit('submit', answer)
 }
 </script>

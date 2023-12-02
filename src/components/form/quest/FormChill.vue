@@ -21,19 +21,24 @@ import { FormButton, FormCheckbox, FormComponent, FormTextarea, TheForm } from '
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const kindChillList = [
-  { value: 'active', text: 'Активный отдых: Спорт, прогулки, велосипед' },
-  { value: 'relax', text: 'Релаксация: Чтение, медитация, йога' },
-  { value: 'natural', text: 'Природа: Пикники, прогулки в парке' },
-  { value: 'culture', text: 'Культурный досуг: Театры, музеи, выставки' }
+  { value: 'активный отдых', text: 'Активный отдых: Спорт, прогулки, велосипед' },
+  { value: 'релаксация', text: 'Релаксация: Чтение, медитация, йога' },
+  { value: 'природа', text: 'Природа: Пикники, прогулки в парке' },
+  { value: 'культурный досуг', text: 'Культурный досуг: Театры, музеи, выставки' }
 ]
 
 const kindChill = ref([])
 const chillObjects = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие дополнительные меры безопасности вы считаете необходимыми в жилом комплексе?': chillObjects.value,
+    'Какие виды активного или пассивного отдыха вы предпочитаете?': kindChill.value.join(', ')
+  }
+
+  emit('submit', answer)
 }
 </script>

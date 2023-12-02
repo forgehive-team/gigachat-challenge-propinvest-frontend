@@ -17,18 +17,25 @@ import { FormButton, FormCheckbox, FormComponent, TheForm } from '@/components/f
 
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const elevatorFeaturesList = [
-  { value: 'fast', text: 'Быстродействие и надёжность: Высокая скорость, минимальные ожидания' },
-  { value: 'safe', text: 'Безопасность и доступность: Системы безопасности, удобство для маломобильных граждан' },
-  { value: 'сomfort', text: 'Простор и комфорт: Большая вместимость, современный дизайн' },
-  { value: 'tech', text: 'Технологичность: Смарт-системы управления, экраны информирования' }
+  { value: 'быстродействие и надёжность', text: 'Быстродействие и надёжность: Высокая скорость, минимальные ожидания' },
+  {
+    value: 'безопасность и доступность',
+    text: 'Безопасность и доступность: Системы безопасности, удобство для маломобильных граждан'
+  },
+  { value: 'простор и комфорт', text: 'Простор и комфорт: Большая вместимость, современный дизайн' },
+  { value: 'технологичность', text: 'Технологичность: Смарт-системы управления, экраны информирования' }
 ]
 
 const elevatorFeatures = ref([])
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие характеристики лифтов являются для вас ключевыми?': elevatorFeatures.value.join(', ')
+  }
+
+  emit('submit', answer)
 }
 </script>

@@ -29,8 +29,12 @@ const prefer = ref<FormSelectorItem>(preferList[0])
 const important = ref('')
 
 const next = (): void => {
-  const result = {}
+  const answer = {
+    'Какие жилые комплексы вы предпочитаете?':
+      prefer.value.key === 'little' ? 'Предпочитаю, компактные комплексы' : 'Предпочитаю, просторные комплексы',
+    'Насколько для вас важен уровень озеленения и наличие общественных пространств?': important.value
+  }
 
-  emit('submit', result)
+  emit('submit', answer)
 }
 </script>

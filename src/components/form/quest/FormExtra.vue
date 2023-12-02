@@ -21,7 +21,7 @@ import { FormButton, FormSelector, FormTextarea, TheForm } from '@/components/fo
 import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit'): void }>()
+const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
 
 const prefersList: FormSelectorItem[] = [
   {
@@ -39,6 +39,14 @@ const hobbies = ref('')
 const requirements = ref('')
 
 const next = (): void => {
-  emit('submit')
+  const answer = {
+    'Какие у вас хобби и интересы, которые могут повлиять на выбор жилья?': hobbies.value,
+    'Где бы Вы предпочли жить?':
+      prefers.value.key === 'downtown' ? 'Я бы предпочел жить в центре города' : 'Я бы предпочел жить в пригороде',
+    'Есть ли у вас особые требования к жилой недвижимости, например, необходимость наличия рабочего кабинета или комнаты для хобби?':
+      requirements.value
+  }
+
+  emit('submit', answer)
 }
 </script>
