@@ -15,11 +15,11 @@
 
 <script setup lang="ts">
 import { FormButton, FormCheckbox, FormComponent, FormSelector, TheForm } from '@/components/form/components'
+import type { FormSelectorItem, QuestResult } from '@/types'
 
-import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
+const emit = defineEmits<{ (e: 'submit', data: QuestResult): void }>()
 
 const yardElements = [
   { value: 'зеленые зоны', text: 'Зеленые зоны: Включает парки, сады и озеленение' },

@@ -10,11 +10,11 @@
 
 <script setup lang="ts">
 import { FormButton, FormSelector, TheForm } from '@/components/form/components'
+import type { FormSelectorItem, QuestResult } from '@/types'
 
-import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
+const emit = defineEmits<{ (e: 'submit', data: QuestResult): void }>()
 
 const importantList: FormSelectorItem[] = [
   { key: '', name: 'Важна ли для Вас близость к основным транспортным узлам?', disabled: true, value: '' },
