@@ -1,56 +1,101 @@
 <template>
   <main v-if="data" class="min-h-[calc(100dvh-246px)] mb-32">
-    <Swiper class="swiper" :slides-per-view="1" loop :space-between="0">
-      <SwiperSlide v-for="(image, idx) in data.images" :key="idx" class="slide"><img :src="image" /></SwiperSlide>
+    <Swiper class="swiper" :speed="700" :slides-per-view="1" loop :space-between="0" @swiper="onSwiper">
+      <SwiperSlide v-for="(image, idx) in data.images" :key="idx" class="slide"><img :src="image" /> </SwiperSlide>
     </Swiper>
 
     <h2 class="font-custom text-center font-light text-5xl my-[60px] leading-none text-secondary">
       {{ data.name }}
     </h2>
     <div class="flex gap-[60px] container mx-auto">
-      <p class="w-full font-sans font-light text-2xl leading-8">
-        {{ data.description }}
-      </p>
-      <p class="w-full font-sans font-light text-2xl leading-8">
-        <br />
-        {{ data.region }}
-        <br />
-        {{ data.city }}
-        <br />
-        {{ data.area }}
+      <div class="w-full font-sans">
+        <p class="font-light text-2xl leading-8">
+          {{ data.description }}
+        </p>
 
-        <br />
-        {{ data.metro }}
-        <br />
-        {{ data.street }}
-      </p>
+        <div v-if="data.region" class="flex w-full mt-[60px]">
+          <span class="mt-2 text-secondary text-lg font-light flex-shrink-0">Регион</span>
+          <span class="w-full border-b border-solid border-[#AFBCD0]"></span>
+          <span class="text-secondary text-lg font-light flex-shrink-0">{{ data.region }}</span>
+        </div>
+        <div v-if="data.city" class="flex w-full mt-2">
+          <span class="text-secondary text-lg font-light flex-shrink-0">Город</span>
+          <span class="w-full border-b border-solid border-[#AFBCD0]"></span>
+          <span class="text-secondary text-lg font-light flex-shrink-0">{{ data.city }}</span>
+        </div>
+        <div v-if="data.area" class="flex w-full mt-2">
+          <span class="text-secondary text-lg font-light flex-shrink-0"> Район</span>
+          <span class="w-full border-b border-solid border-[#AFBCD0]"></span>
+          <span class="text-secondary text-lg font-light flex-shrink-0">{{ data.area }}</span>
+        </div>
+        <div v-if="data.metro" class="flex w-full mt-2">
+          <span class="text-secondary text-lg font-light flex-shrink-0">Метро</span>
+          <span class="w-full border-b border-solid border-[#AFBCD0]"></span>
+          <span class="text-secondary text-lg font-light flex-shrink-0">{{ data.metro }}</span>
+        </div>
+        <div v-if="data.street" class="flex w-full mt-2">
+          <span class="text-secondary text-lg font-light flex-shrink-0">Улица</span>
+          <span class="w-full border-b border-solid border-[#AFBCD0]"></span>
+          <span class="text-secondary text-lg font-light flex-shrink-0">{{ data.street }}</span>
+        </div>
+      </div>
+
+      <div class="w-full">
+        <YandexMap :coordinates="data.coordinates" />
+      </div>
     </div>
-    <h2 class="font-custom text-center font-light text-5xl my-[60px] leading-none text-secondary">Местоположение</h2>
-    <YandexMap :coordinates="data.coordinates" />
-    <h2 class="font-custom text-center font-light text-5xl my-[60px] leading-none text-secondary">Лоты проекта</h2>
-    <div class="container mx-auto grid grid-cols-2 gap-[60px]">
-      <LotCard />
-      <LotCard />
-      <LotCard />
+    <h2 class="font-custom text-center font-light text-5xl my-[60px] leading-none text-secondary">
+      Соответствие Вашим предпочтениям
+    </h2>
+    <div class="container flex gap-[60px] mx-auto">
+      <div class="w-full">
+        <div v-for="(pref, i) in preferencesLeft" :key="`${i}-l`" class="flex w-full mt-2">
+          <span class="text-secondary text-lg font-light flex-shrink-0 pl-5 relative markered">{{ pref }}</span>
+          <span class="w-full border-b border-solid border-[#AFBCD0]"></span>
+          <span class="text-secondary text-lg font-light flex-shrink-0">{{ generateRandomPercentage() }}</span>
+        </div>
+      </div>
+      <div class="w-full">
+        <div v-for="(pref, i) in preferencesRight" :key="`${i}-r`" class="flex w-full mt-2">
+          <span class="text-secondary text-lg font-light flex-shrink-0 pl-5 relative markered">{{ pref }}</span>
+          <span class="w-full border-b border-solid border-[#AFBCD0]"></span>
+          <span class="text-secondary text-lg font-light flex-shrink-0">{{ generateRandomPercentage() }}</span>
+        </div>
+      </div>
     </div>
+
+    <!-- <h2 class="font-custom text-center font-light text-5xl my-[60px] leading-none text-secondary">Лоты проекта</h2> -->
+    <!-- <div class="container mx-auto grid grid-cols-2 gap-[60px]">
+      <LotCard />
+      <LotCard />
+      <LotCard />
+    </div> -->
   </main>
 </template>
 
 <script setup lang="ts">
 import { api } from '@/api'
 import { YandexMap } from '@/components'
-import { LotCard } from '@/components/'
 import type { Project } from '@/types'
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Ref } from 'vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const id = route.params.id
 
 const data: Ref<Project | null> = ref(null)
+const swiperInstance: any = ref(null)
+let intervalRef: any
+
+const onSwiper = (swiper: any) => {
+  swiperInstance.value = swiper
+  intervalRef = setInterval(() => {
+    swiperInstance.value?.slideNext()
+  }, 3000)
+}
 
 const fetchData = async (): Promise<void> => {
   try {
@@ -79,8 +124,38 @@ const fetchData = async (): Promise<void> => {
   }
 }
 
+const preferencesLeft = [
+  'Транспортная доступность',
+  'Парковка',
+  'Социальная инфраструктура',
+  'Объекты спорта',
+  'Дворовое пространство',
+  'Безопасность',
+  'Массовый отдых',
+  'Вредные воздействия, неблагоприятное соседство',
+  'Архитектура, фасады'
+]
+
+const preferencesRight = [
+  'Входные группы, подъезды',
+  'Лифты',
+  'Инженерные системы',
+  'Среда для маломобильных граждан',
+  'Энергоэффективность',
+  'Потребительские особенности дома и квартир',
+  'Клиентский сервис',
+  'Параметры застройки'
+]
+
+const generateRandomPercentage = (): string => {
+  return String(Math.floor(Math.random() * 11) + 90) + '%'
+}
+
 onMounted(() => {
   fetchData()
+})
+onUnmounted(() => {
+  if (intervalRef) clearInterval(intervalRef)
 })
 </script>
 
@@ -96,6 +171,19 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+.markered {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    background: #afb7c2;
   }
 }
 </style>

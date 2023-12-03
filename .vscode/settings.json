@@ -11,5 +11,10 @@
   },
   "css.customData": [".vscode/tailwind.json"],
   "scss.lint.emptyRules": "ignore",
-  "sort-imports.languages": ["javascript", "typescript", "vue"]
+  "sort-imports.languages": [
+    "javascript",
+    "typescript",
+    "vue"
+  ],
+  "vue.codeActions.enabled": false
 }

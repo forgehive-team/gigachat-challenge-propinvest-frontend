@@ -15,7 +15,7 @@ defineProps<{
 
 <style scoped>
 .ymap-container {
-  height: 500px;
+  height: 400px;
   width: 100%;
   padding: 0 !important;
   margin: 0 !important;
