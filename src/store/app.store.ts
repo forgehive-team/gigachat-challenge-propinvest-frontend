@@ -2,7 +2,7 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    user: true as any
+    user: null as any
   }),
 
   actions: {
