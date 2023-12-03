@@ -18,7 +18,7 @@ const router = useRouter()
 const formStep = ref(1)
 
 const register = (data: RegisterReqData): void => {
-  api.auth.register(data).then(() => router.push('/account'))
+  api.auth.register(data).then(() => router.push('/quest'))
 }
 
 const login = (data: LoginReqData): void => {
