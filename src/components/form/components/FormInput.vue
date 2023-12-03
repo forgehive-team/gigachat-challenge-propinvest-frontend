@@ -15,7 +15,12 @@ import { FormComponent } from '.'
 import { computed } from 'vue'
 
 const props = withDefaults(
-  defineProps<{ modelValue: string | number; disabled?: boolean; placeholder?: string; type?: 'text' | 'number' }>(),
+  defineProps<{
+    modelValue: string | number
+    disabled?: boolean
+    placeholder?: string
+    type?: 'text' | 'number' | 'password'
+  }>(),
   { type: 'text', disabled: false }
 )
 
