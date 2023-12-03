@@ -4,7 +4,7 @@ import * as quest from './quest'
 
 import axios from 'axios'
 
-const baseURL = 'https://api-propinvest.forgehive.ru/api/'
+const baseURL = 'https://api-propinvest.forgehive.ru/api'
 const instance = axios.create({
   baseURL,
   withCredentials: true
