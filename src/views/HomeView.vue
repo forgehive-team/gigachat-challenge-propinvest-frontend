@@ -24,9 +24,12 @@
 
 <script setup lang="ts">
 import { IconHomeCircle } from '@/components/icons'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const goToRegistration = (): void => {
-  alert('Опять на непонятных сайтах регаешься да')
+  router.push('/reg')
 }
 </script>
 
