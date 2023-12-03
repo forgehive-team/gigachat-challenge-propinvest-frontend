@@ -80,7 +80,7 @@ import type { Project } from '@/types'
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Ref } from 'vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -88,10 +88,11 @@ const id = route.params.id
 
 const data: Ref<Project | null> = ref(null)
 const swiperInstance: any = ref(null)
+let intervalRef: any
 
 const onSwiper = (swiper: any) => {
   swiperInstance.value = swiper
-  setInterval(() => {
+  intervalRef = setInterval(() => {
     swiperInstance.value?.slideNext()
   }, 3000)
 }
@@ -152,6 +153,9 @@ const generateRandomPercentage = (): string => {
 
 onMounted(() => {
   fetchData()
+})
+onUnmounted(() => {
+  if (intervalRef) clearInterval(intervalRef)
 })
 </script>
 
