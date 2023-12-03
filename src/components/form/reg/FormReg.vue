@@ -31,10 +31,10 @@ const login = ref('')
 const password = ref('')
 
 const onClickRegister = (): void => {
-  emit('register', { name: name.value, login: login.value, password: password.value })
+  emit('register', { name: name.value, email: login.value, password: password.value })
 }
 
 const onClickLogin = (): void => {
-  emit('login', { login: login.value, password: password.value })
+  emit('login', { email: login.value, password: password.value })
 }
 </script>
