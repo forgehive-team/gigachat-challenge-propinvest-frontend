@@ -2,9 +2,9 @@
   <main class="container min-h-[calc(100dvh-246px)] mx-auto mb-16">
     <div class="mt-[100px] flex justify-between h-min w-full items-end">
       <h2 class="font-custom font-bold text-[41px] text-secondary leading-none">Кондратьев Сергей Викторович</h2>
-      <button class="text-accent font-light text-2xl leading-none flex gap-2 items-center">
+      <!-- <button class="text-accent font-light text-2xl leading-none flex gap-2 items-center">
         Редактировать <IconArrowRight />
-      </button>
+      </button> -->
     </div>
     <div class="grid-container">
       <ProfileInfoCard :fields="basicInfo" />
@@ -16,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import { ProfileInfoCard } from '@/components/'
 import { IconArrowRight } from '@/components/icons'
-import { useAccountInfo } from '@/composables'
+import { ProfileInfoCard } from '@/components/'
 import { onMounted } from 'vue'
+import { useAccountInfo } from '@/composables'
 
 const { basicInfo, conditions, spending, income, fetchAccountInfo } = useAccountInfo()
 
