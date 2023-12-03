@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center">
-    <span class="mb-14 uppercase font-bold text-5xl font-['Arsenal']"> {{ data.title }}</span>
+    <span class="mb-14 uppercase text-5xl font-['Arsenal']"> {{ data.title }}</span>
     <div class="flex flex-col items-center space-y-4">
       <slot />
     </div>
