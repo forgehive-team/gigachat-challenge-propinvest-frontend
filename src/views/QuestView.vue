@@ -64,6 +64,7 @@ const nextStep = async (data: QuestResult): Promise<void> => {
 
   if (formStep.value === 17) {
     await api.quest.submitQuest(answers.value).then(() => router.push('/account'))
+    return
   }
 
   ++formStep.value
