@@ -1,6 +1,6 @@
 <template>
   <main class="container min-h-[calc(100dvh-246px)] mx-auto mb-32">
-    <h1 class="font-custom text-center font-bold text-5xl my-[60px] leading-none text-secondary">ПРОЕКТЫ</h1>
+    <h1 class="font-custom text-center font-bold text-5xl my-[60px] leading-none text-secondary">РЕКОМЕНДАЦИИ</h1>
     <div v-if="projects" class="flex flex-col gap-[60px]">
       <ProjectCard
         v-for="project in projects"
