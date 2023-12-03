@@ -42,17 +42,45 @@ import {
   FormTransportAvailability,
   FormYard
 } from '@/components/form/quest'
+import { onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
-import { ref } from 'vue'
+import type { QuestResult } from '@/types'
+import { api } from '@/api'
+
+const route = useRoute()
+const router = useRouter()
 
 const formStep = ref(1)
-const answers = []
+const answers = ref<QuestResult>({})
 
-const nextStep = (data: unknown): void => {
-  console.log(data)
-  answers.push(data)
+const nextStep = async (data: QuestResult): Promise<void> => {
+  answers.value = {
+    ...answers.value,
+    ...data
+  }
 
-  if (formStep.value === 17) return
+  localStorage.setItem('quest_result', JSON.stringify(answers.value))
+
+  if (formStep.value === 17) {
+    await api.quest.submitQuest(answers.value).then(() => router.push('/account'))
+  }
+
   ++formStep.value
+  router.push({ path: '/quest', query: { step: formStep.value } })
 }
+
+onMounted(() => {
+  const step = parseInt(route.query['step']?.toString() || '1')
+  formStep.value = step > 17 || step < 1 ? 1 : step
+
+  if (formStep.value === 1) {
+    localStorage.setItem('quest_result', '{}')
+  }
+
+  const localStorageData = localStorage.getItem('quest_result')
+  if (localStorageData) {
+    answers.value = JSON.parse(localStorageData)
+  }
+})
 </script>

@@ -12,11 +12,11 @@
 
 <script setup lang="ts">
 import { FormButton, FormSelector, FormTextarea, TheForm } from '@/components/form/components'
+import type { FormSelectorItem, QuestResult } from '@/types'
 
-import type { FormSelectorItem } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
+const emit = defineEmits<{ (e: 'submit', data: QuestResult): void }>()
 
 const needSocialList: FormSelectorItem[] = [
   {

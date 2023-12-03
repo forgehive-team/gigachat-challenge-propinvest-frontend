@@ -12,9 +12,10 @@
 <script setup lang="ts">
 import { FormButton, FormTextarea, TheForm } from '@/components/form/components'
 
+import type { QuestResult } from '@/types'
 import { ref } from 'vue'
 
-const emit = defineEmits<{ (e: 'submit', data: unknown): void }>()
+const emit = defineEmits<{ (e: 'submit', data: QuestResult): void }>()
 
 const harmFactors = ref('')
 
