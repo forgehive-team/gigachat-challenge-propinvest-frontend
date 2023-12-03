@@ -29,6 +29,6 @@ const chooseRole = (): void => {
 
 const fillProfile = (): void => {
   alert('ZAPLNENIIE ZHOPY - DONE')
-  router.replace('/questionnaire')
+  router.replace('/quest')
 }
 </script>
