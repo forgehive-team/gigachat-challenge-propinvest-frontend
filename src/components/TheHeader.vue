@@ -6,16 +6,20 @@
       </div>
 
       <div class="flex space-x-32 xl:space-x-56 text-secondary font-light text-xl">
-        <menu class="flex flex-row space-x-20">
-          <RouterLink to="/projects">Проекты</RouterLink>
-          <a>Лоты</a>
-          <RouterLink to="/">О компании</RouterLink>
-          <a>Контакты</a>
-        </menu>
-
-        <div class="flex flex-col text-accent">
-          <IconPerson />
-        </div>
+        <template v-if="isLoggedIn">
+          <menu class="flex flex-row space-x-20">
+            <RouterLink to="/">О компании</RouterLink>
+            <RouterLink to="/projects">Рекомендации</RouterLink>
+          </menu>
+          <RouterLink to="/account" class="flex flex-col text-accent">
+            <IconPerson />
+          </RouterLink>
+        </template>
+        <template v-else>
+          <menu class="flex flex-row space-x-20">
+            <RouterLink to="/reg">Войти</RouterLink>
+          </menu>
+        </template>
       </div>
     </div>
   </header>
@@ -24,4 +28,11 @@
 <script setup lang="ts">
 import { IconLogo, IconPerson } from '@/components/icons'
 import { RouterLink } from 'vue-router'
+import { useAppStore } from '@/store/app.store'
+import { computed } from 'vue'
+
+const store = useAppStore()
+const isLoggedIn = computed(() => {
+  return store.isLoggedIn
+})
 </script>
